@@ -2,8 +2,9 @@
 <p class="lead">Shop Name</p>
 <div class="list-group">
 
-	<c:forEach items="${category}" var="product">
-	<a href="#" class="list-group-item active">${product.name}</a> 	
+	<c:forEach items="${allCategories}" var="category">
+	<a href="${contextRoot}/show/category/${category.id}/products" class="list-group-item active"
+	id="a_${category.name}">${category.name}</a> 	
 	</c:forEach>
 
 </div>

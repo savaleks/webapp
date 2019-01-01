@@ -11,35 +11,46 @@ import com.savaleks.websiteback.dto.Category;
 @Repository("categoryDAO")
 public class CategoryDAOImpl implements CategoryDAO {
 	
-	private static List<Category> category = new ArrayList<>();
+	private static List<Category> allCategories = new ArrayList<>();
 	
 	static {
-		Category product = new Category();
-		product.setId(1);
-		product.setName("Laptops");
-		product.setDescription("Good laptop for good price");
-		product.setImageURL("img1.png");		
-		category.add(product);
+		Category category = new Category();
+		category.setId(1);
+		category.setName("Laptops");
+		category.setDescription("Good laptop for good price");
+		category.setImageURL("img1.png");		
+		allCategories.add(category);
 		
-		product = new Category();
-		product.setId(2);
-		product.setName("Smartphones");
-		product.setDescription("Good mobile phones for good price");
-		product.setImageURL("img2.png");		
-		category.add(product);
+		category = new Category();
+		category.setId(2);
+		category.setName("Smartphones");
+		category.setDescription("Good mobile phones for good price");
+		category.setImageURL("img2.png");		
+		allCategories.add(category);
 		
-		product = new Category();
-		product.setId(3);
-		product.setName("Headphones");
-		product.setDescription("Good headphones for good price");
-		product.setImageURL("img3.png");		
-		category.add(product);
+		category = new Category();
+		category.setId(3);
+		category.setName("Headphones");
+		category.setDescription("Good headphones for good price");
+		category.setImageURL("img3.png");		
+		allCategories.add(category);
 		}
 
 	@Override
 	public List<Category> list() {
 		
-		return category;
+		return allCategories;
+	}
+
+	@Override
+	public Category get(int id) {
+		// enhanced for loop 
+		for(Category category:allCategories) {
+			if(category.getId() == id)
+				return category;
+		}
+		
+		return null;
 	}
 
 }
