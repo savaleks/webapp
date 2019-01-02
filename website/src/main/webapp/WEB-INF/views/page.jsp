@@ -53,6 +53,8 @@
 		<script src="${js}/bootstrap.js"></script>
 		<!-- My javascript -->
 		<script src="${js}/myjquery.js"></script>
+		<script src="${js}/jquery.dataTables.js"></script>
+		<script src="${js}/dataTables.bootstrap.js"></script>
 
 	</div>
 

@@ -8,6 +8,8 @@
 
 <script>
 	window.menu = '${title}';
+	
+	window.contextRoot = '${contextRoot}';
 </script>
 
 <!-- Bootstrap core CSS -->
@@ -18,5 +20,8 @@
 
 <!-- Bootstrap Slate Theme -->
 <link href="${css}/bootstrap-spacelab-theme.css" rel="stylesheet">
+
+<!-- Bootstrap DataTable -->
+<link href="${css}/dataTables.bootstrap.css" rel="stylesheet">
 
 </head>
