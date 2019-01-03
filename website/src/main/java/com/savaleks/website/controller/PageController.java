@@ -1,5 +1,7 @@
 package com.savaleks.website.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +16,8 @@ import com.savaleks.websiteback.dto.Product;
 @Controller
 public class PageController {
 	
+	private static final Logger LOGGER = LoggerFactory.getLogger(PageController.class);
+	
 	@Autowired
 	private CategoryDAO categoryDAO;
 	
@@ -24,6 +28,9 @@ public class PageController {
 	public ModelAndView index() {
 		ModelAndView model = new ModelAndView("page");
 		model.addObject("title", "Home");
+		
+		LOGGER.info("Inside PageController INFO " );
+		LOGGER.debug("Inside PageController DEBUG ");
 		
 		// list of categories
 		model.addObject("allCategories", categoryDAO.list());
