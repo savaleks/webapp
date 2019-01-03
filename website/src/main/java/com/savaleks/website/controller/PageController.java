@@ -7,13 +7,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.savaleks.websiteback.dao.CategoryDAO;
+import com.savaleks.websiteback.dao.ProductDAO;
 import com.savaleks.websiteback.dto.Category;
+import com.savaleks.websiteback.dto.Product;
 
 @Controller
 public class PageController {
 	
 	@Autowired
 	private CategoryDAO categoryDAO;
+	
+	@Autowired
+	private ProductDAO productDAO;
 
 	@RequestMapping(value = {"/", "/home", "/index"})
 	public ModelAndView index() {
@@ -74,6 +79,21 @@ public class PageController {
 		model.addObject("category", category);
 		
 		model.addObject("userClickCategoryProducts", true);
+		return model;
+	}
+	
+	// Clicking on product view button
+	@RequestMapping(value = "/show/{id}/product")
+	public ModelAndView showSingleProduct(@PathVariable int id) {
+		ModelAndView model = new ModelAndView("page");
+		Product product = productDAO.get(id);
+		product.setViews(product.getViews() + 1);
+		productDAO.update(product);
+		
+		model.addObject("title", product.getName());
+		model.addObject("product", product);
+		model.addObject("userClickShowProduct", true);
+		
 		return model;
 	}
 }
