@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.savaleks.website.exception.ProductNotFound;
 import com.savaleks.websiteback.dao.CategoryDAO;
 import com.savaleks.websiteback.dao.ProductDAO;
 import com.savaleks.websiteback.dto.Category;
@@ -91,9 +92,10 @@ public class PageController {
 	
 	// Clicking on product view button
 	@RequestMapping(value = "/show/{id}/product")
-	public ModelAndView showSingleProduct(@PathVariable int id) {
+	public ModelAndView showSingleProduct(@PathVariable int id) throws ProductNotFound {
 		ModelAndView model = new ModelAndView("page");
 		Product product = productDAO.get(id);
+		if(product == null) throw new ProductNotFound();
 		product.setViews(product.getViews() + 1);
 		productDAO.update(product);
 		
