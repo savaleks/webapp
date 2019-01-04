@@ -42,7 +42,7 @@
 					<div class="col-xs-12">
 						<div class="jumbotron jumbotron-fluid">
 							<div class="container">
-								<h2 class="display-4"><b>${errorTitle}</b></h2>
+								<h1 class="display-4"><b>${errorTitle}</b></h1>
 								<hr/>
 								<p class="lead">${errorDescription}</p>
 							</div>
