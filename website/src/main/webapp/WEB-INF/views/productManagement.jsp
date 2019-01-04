@@ -1,18 +1,32 @@
 <%@taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="container">
 
 	<div class="row">
+	
+		<c:if test="${not empty message}">
+	
+			<div class="col-md-offset-2 col-md-8">
+			
+				<div class="alert alert-success alert-dismissible text-center">
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+					${message}
+				</div>
+			
+			</div>
+		
+		</c:if>
 
 		<div class="col-md-offset-2 col-md-8">
 
-			<div class="panel panel-default">
+			<div class="panel panel-info">
 
 				<div class="panel-heading">
 					<h4 class="text-center">Product Management</h4>
 				</div>
 
 				<div class="panel-body">
-					<sf:form class="form-horizontal" modelAttribute="product">
+					<sf:form class="form-horizontal" modelAttribute="product" action="${contextRoot}/manage/products" method="POST">
 						<div class="form-group">
 							<label class="control-label col-md-4" for="name">Enter Product Name: </label>
 							<div class="col-md-8">
