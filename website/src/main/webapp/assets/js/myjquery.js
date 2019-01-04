@@ -92,7 +92,7 @@ $(function(){
 	if($alert.length){
 		setTimeout(function(){
 			$alert.fadeOut('slow');
-		},2000)
+		},3000)
 	}
 	
 	

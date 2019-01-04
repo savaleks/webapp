@@ -8,9 +8,9 @@
 	
 			<div class="col-md-offset-2 col-md-8">
 			
-				<div class="alert alert-success alert-dismissible text-center">
+				<div class="alert alert-warning alert-dismissible text-center">
 					<button type="button" class="close" data-dismiss="alert">&times;</button>
-					${message}
+					<h4><b>${message}</b></h4>
 				</div>
 			
 			</div>
@@ -31,6 +31,7 @@
 							<label class="control-label col-md-4" for="name">Enter Product Name: </label>
 							<div class="col-md-8">
 								<sf:input type="text" path="name" id="name" placeholder="Product name" class="form-control" /> 
+								<sf:errors path="name" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 
@@ -38,6 +39,7 @@
 							<label class="control-label col-md-4" for="brand">Enter Product Brand: </label>
 							<div class="col-md-8">
 								<sf:input type="text" path="brand" id="brand" placeholder="Product brand" class="form-control" /> 
+								<sf:errors path="brand" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 						
@@ -51,7 +53,8 @@
 						<div class="form-group">
 							<label class="control-label col-md-4" for="unitPrice">Enter Product Price: </label>
 							<div class="col-md-8">
-								<sf:input type="number" path="unitPrice" id="unitPrice" placeholder="Product price in &#8364;" class="form-control" /> 
+								<sf:input type="number" path="unitPrice" id="unitPrice" placeholder="Product price in &#8364;" class="form-control" />
+								<sf:errors path="unitPrice" cssClass="help-block" element="em"/> 
 							</div>
 						</div>
 						

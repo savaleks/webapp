@@ -2,10 +2,14 @@ package com.savaleks.website.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -52,7 +56,13 @@ public class ProductManagementController {
 	
 	// product submission 
 	@RequestMapping(value="/products", method=RequestMethod.POST)
-	public String productSubmission(@ModelAttribute("product") Product modProduct) {
+	public String productSubmission(@Valid @ModelAttribute("product") Product modProduct, BindingResult results, Model mod) {
+		if(results.hasErrors()) {
+			mod.addAttribute("userClickManageProducts", true);
+			mod.addAttribute("title", "Manage Products");
+			mod.addAttribute("message", "Validation not accepted");
+			return "page";
+		}
 		
 		LOGGER.info(modProduct.toString());
 		
