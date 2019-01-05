@@ -2,6 +2,7 @@ package com.savaleks.website.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.savaleks.website.util.FIleUploadUtil;
 import com.savaleks.websiteback.dao.CategoryDAO;
 import com.savaleks.websiteback.dao.ProductDAO;
 import com.savaleks.websiteback.dto.Category;
@@ -56,7 +58,8 @@ public class ProductManagementController {
 	
 	// product submission 
 	@RequestMapping(value="/products", method=RequestMethod.POST)
-	public String productSubmission(@Valid @ModelAttribute("product") Product modProduct, BindingResult results, Model mod) {
+	public String productSubmission(@Valid @ModelAttribute("product") Product modProduct, BindingResult results, Model mod,
+			HttpServletRequest request) {
 		if(results.hasErrors()) {
 			mod.addAttribute("userClickManageProducts", true);
 			mod.addAttribute("title", "Manage Products");
@@ -68,6 +71,10 @@ public class ProductManagementController {
 		
 		// new product record
 		productDAO.add(modProduct);
+		
+		if(!modProduct.getFile().getOriginalFilename().equals("")) {
+			FIleUploadUtil.uploadFile(request, modProduct.getFile(), modProduct.getCode());
+		}
 		
 		return "redirect:/manage/products?operation=product";
 	}
