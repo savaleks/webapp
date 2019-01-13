@@ -127,6 +127,7 @@
 							<th>Id</th>
 							<th>&#160;</th>
 							<th>Name</th>
+							<th>Brand</th>
 							<th>Quantity</th>
 							<th>Unit Price</th>
 							<th>Active</th>
@@ -134,33 +135,12 @@
 						</tr>
 					</thead>
 					
-					<tbody>
-						<tr>
-							<td>4</td>
-							<td>
-								<img class="adminDataTableImg" src="${contextRoot}/resources/images/PRDMNO123PQRX.jpg"
-								 alt="macbook" style="height:50px;width:50px;"/>
-							</td>
-							<td>MacBook Pro</td>
-							<td>3</td>
-							<td>&#8364; 260.00</td>
-							<td>
-								<label class="switch">
-									<input type="checkbox" value="4"/>
-									<span class="slider"></span>
-								</label>
-							</td>
-							<td>
-								<a href="${contextRoot}/manage/4/product" class="btn btn-warning">Edit</a>
-							</td>
-						</tr>
-					</tbody>
-					
 					<tfoot>
 						<tr>
 							<th>Id</th>
 							<th>&#160;</th>
 							<th>Name</th>
+							<th>Brand</th>
 							<th>Quantity</th>
 							<th>Unit Price</th>
 							<th>Active</th>
