@@ -95,6 +95,32 @@ $(function(){
 		},3000)
 	}
 	
+	// admin table
 	
+	$('.switch input[type="checkbox"]').on('change', function(){
+		var checkbox = $(this);
+		var checked = checkbox.prop('checked');
+		var dMsg = (checked)?'You want activate Product?':'You want deactivate Product?';
+		var value = checkbox.prop('value');
+		
+		bootbox.confirm({
+			size: 'medium',
+			title: 'Product ON/OFF',
+			message: dMsg,
+			callback: function(confirmed){
+				if(confirmed){
+					console.log(value);
+					bootbox.alert({
+						size: 'medium',
+						title: 'Information',
+						message: 'You want perform operation on Product ' + value
+					});
+				} else {
+					checkbox.prop('checked', !checked);
+				}
+			}
+		});
+		
+	});
 	
 });

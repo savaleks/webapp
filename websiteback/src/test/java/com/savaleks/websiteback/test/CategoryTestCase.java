@@ -52,7 +52,7 @@ public class CategoryTestCase {
 	 * assertEquals("Single category updated from the table", true,
 	 * categoryDAO.update(category)); }
 	 */
-	
+
 	/*
 	 * @Test public void testDeleteCategory() {
 	 * 
@@ -61,13 +61,44 @@ public class CategoryTestCase {
 	 * assertEquals("Single category deleted from the table", true,
 	 * categoryDAO.delete(category)); }
 	 */
-	
-//	@Test
-//	public void testListCategory() {
-//					
-//		assertEquals("Successfully fetched the list of categories from the table!",2,categoryDAO.list().size());
-//		
-//		
-//	}
 
+	/*
+	 * @Test public void testListCategory() {
+	 * 
+	 * assertEquals("Successfully fetched the list of categories from the table!",2,
+	 * categoryDAO.list().size());
+	 * 
+	 * 
+	 * }
+	 */
+
+	@Test
+	public void testCRUDCategory() {
+
+		category = new Category();
+
+		category.setName("Phones");
+		category.setDescription("Good phones for good price");
+		category.setImageURL("img1.png");
+
+		assertEquals("Added inside the table", true, categoryDAO.add(category));
+
+		category = new Category();
+
+		category.setName("Television");
+		category.setDescription("Good TV for good price");
+		category.setImageURL("img2.png");
+
+		assertEquals("Added inside the table", true, categoryDAO.add(category));
+
+		category = categoryDAO.get(2);
+
+		category.setName("TV");
+
+		assertEquals("Single category updated from the table", true, categoryDAO.update(category));
+
+		assertEquals("Single category deleted from the table", true, categoryDAO.delete(category));
+
+		assertEquals("Successfully fetched the list of categories from the table!", 1, categoryDAO.list().size());
+	}
 }

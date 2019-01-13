@@ -13,8 +13,8 @@ public class FIleUploadUtil {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(FIleUploadUtil.class);
 
-	private static final String ABSOLUTE_PATH = "C:\\Users\\Alexander\\spring\\webapp\\website\\src\\main\\webapp\\assets\\images\\";
-	private static String REAL_PATH = "";
+	private static final String ABSOLUTE_PATH = "C:\\Users\\Alexander\\repos\\webapp\\website\\src\\main\\webapp\\assets\\images\\";
+	private static String REAL_PATH = null;
 	
 	public static void uploadFile(HttpServletRequest request, MultipartFile file, String code) {
 		
@@ -24,11 +24,11 @@ public class FIleUploadUtil {
 		
 		// check if directory exist
 		if(!new File(ABSOLUTE_PATH).exists()) {
-			new File(ABSOLUTE_PATH).mkdir();
+			new File(ABSOLUTE_PATH).mkdirs();
 		}
 		
 		if(!new File(REAL_PATH).exists()) {
-			new File(REAL_PATH).mkdir();
+			new File(REAL_PATH).mkdirs();
 		}
 		
 		try {
@@ -37,7 +37,6 @@ public class FIleUploadUtil {
 			//project directory upload
 			file.transferTo(new File(ABSOLUTE_PATH + code + ".jpg"));
 		} catch (IOException e) {
-			e.printStackTrace();
 		}
 		
 	}

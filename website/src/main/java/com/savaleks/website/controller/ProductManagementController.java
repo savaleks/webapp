@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.savaleks.website.util.FIleUploadUtil;
+import com.savaleks.website.validator.ProductValidation;
 import com.savaleks.websiteback.dao.CategoryDAO;
 import com.savaleks.websiteback.dao.ProductDAO;
 import com.savaleks.websiteback.dto.Category;
@@ -60,6 +61,9 @@ public class ProductManagementController {
 	@RequestMapping(value="/products", method=RequestMethod.POST)
 	public String productSubmission(@Valid @ModelAttribute("product") Product modProduct, BindingResult results, Model mod,
 			HttpServletRequest request) {
+		
+		new ProductValidation().validate(modProduct, results);
+		
 		if(results.hasErrors()) {
 			mod.addAttribute("userClickManageProducts", true);
 			mod.addAttribute("title", "Manage Products");

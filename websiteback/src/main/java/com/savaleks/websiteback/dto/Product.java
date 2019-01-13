@@ -9,8 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -22,10 +22,11 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String code;
-	@NotBlank(message = "Enter your name")
+	@NotBlank(message = "Enter product name")
 	private String name;
 	@NotBlank(message = "Enter product brand")
 	private String brand;
+	@NotBlank(message = "Enter product description")
 	@JsonIgnore
 	private String description;
 	@Column(name = "unit_price")
@@ -33,7 +34,6 @@ public class Product {
 	private double unitPrice;
 	private int quantity;
 	@Column(name = "is_active")
-	@JsonIgnore
 	private boolean active;
 	@Column(name = "category_id")
 	@JsonIgnore
