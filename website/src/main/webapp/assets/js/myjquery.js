@@ -231,4 +231,47 @@ var $adminProductsTable = $('#adminProductsTable');
 		});
 	}
 	//*******************
+	// validation
+	
+	var $categoryForm = $('#categoryForm');
+	if($categoryForm.length){
+		$categoryForm.validate({
+			rules: {
+				name: {
+					required: true,
+					minlength: 2
+				},
+				description: {
+					required: true
+				}
+			},
+			
+			messages: {
+				name: {
+					required: 'Please enter category Name',
+					minlength: 'The category name must be not less than 2 symbols'
+				},
+				description: {
+					required: 'Please enter description',
+				}
+			},
+			errorElement: 'em',
+			errorPlacement: function(error, element){
+				error.addClass('help-block');
+				error.insertAfter(element);
+			}
+		});
+	}
+	
+	//********************
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 });
