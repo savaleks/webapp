@@ -189,7 +189,7 @@ var $adminProductsTable = $('#adminProductsTable');
 					bSortable: false,
 					mRender: function(data,type,row){
 						var str = '';
-						str += '<a href="${contextRoot}/manage/'+data+'/product" class="btn btn-warning">Edit</a>';
+						str += '<a href="'+window.contextRoot+'/manage/'+data+'/product" class="btn btn-warning">Edit</a>';
 						return str;
 					}
 				}

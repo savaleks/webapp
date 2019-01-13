@@ -53,10 +53,24 @@ public class ProductManagementController {
 		if(operation != null) {
 			if(operation.equals("product")) {
 				model.addObject("message", "Product submitted");
+			} else if(operation.equals("category")) {
+				model.addObject("message", "Category submitted");
 			}
 		}
 		
 		return  model;
+	}
+	
+	@RequestMapping(value="/{id}/product", method=RequestMethod.GET)
+	public ModelAndView showEditedProducts(@PathVariable int id) {
+		ModelAndView model = new ModelAndView("page");
+		model.addObject("userClickManageProducts", true);
+		model.addObject("title", "Manage Products");
+		
+		Product newProduct = productDAO.get(id);
+		model.addObject("product", newProduct);
+		return model;
+		
 	}
 	
 	// product submission 
@@ -64,7 +78,13 @@ public class ProductManagementController {
 	public String productSubmission(@Valid @ModelAttribute("product") Product modProduct, BindingResult results, Model mod,
 			HttpServletRequest request) {
 		
-		new ProductValidation().validate(modProduct, results);
+		if(modProduct.getId() == 0) {
+			new ProductValidation().validate(modProduct, results);
+		} else {
+			if(!modProduct.getFile().getOriginalFilename().equals("")) {
+				new ProductValidation().validate(modProduct, results);
+			}
+		}
 		
 		if(results.hasErrors()) {
 			mod.addAttribute("userClickManageProducts", true);
@@ -75,8 +95,14 @@ public class ProductManagementController {
 		
 		LOGGER.info(modProduct.toString());
 		
-		// new product record
-		productDAO.add(modProduct);
+		
+		if(modProduct.getId() == 0) {
+			// new product record with id 0
+			productDAO.add(modProduct);
+		} else {
+			// update product if id is not 0
+			productDAO.update(modProduct);
+		}
 		
 		if(!modProduct.getFile().getOriginalFilename().equals("")) {
 			FIleUploadUtil.uploadFile(request, modProduct.getFile(), modProduct.getCode());
@@ -97,8 +123,19 @@ public class ProductManagementController {
 							:"You activated the Product with id " + product.getId();
 	}
 	
+	@RequestMapping(value="/category", method=RequestMethod.POST)
+	public String categorySubmission(@ModelAttribute Category category) {
+		categoryDAO.add(category);
+		return "redirect:/manage/products?operation=category";
+	}
+	
 	@ModelAttribute("categories")
 	public List<Category> getCategories(){	
 		return categoryDAO.list();
+	}
+	
+	@ModelAttribute("category")
+	public Category getCategory() {
+		return new Category();
 	}
 }
