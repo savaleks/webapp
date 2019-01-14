@@ -105,4 +105,11 @@ public class PageController {
 		
 		return model;
 	}
+	
+	@RequestMapping(value = "/register")
+	public ModelAndView register() {
+		ModelAndView model = new ModelAndView("page");
+		model.addObject("title", "Register");
+		return model;
+	}
 }

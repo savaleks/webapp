@@ -1,5 +1,7 @@
 $(function(){
+	
 	// Active menu config
+	
 	switch(menu){
 	case 'About Us':
 		$('#about').addClass('active');
