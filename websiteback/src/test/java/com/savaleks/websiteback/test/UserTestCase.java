@@ -184,7 +184,7 @@ public class UserTestCase {
 		assertEquals("Failed to add shipping address", true, userDAO.addAddress(address));	
 	}
 	*/
-	
+	/*
 	@Test
 	public void testGetAddresses() {
 		
@@ -194,7 +194,7 @@ public class UserTestCase {
 		
 		assertEquals("Failed to fetch list", "Vilnius", userDAO.getBillingAddress(user).getCity());
 	}
-		
+	*/	
 		
 		
 		
