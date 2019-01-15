@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.savaleks.website.exception.ProductNotFound;
@@ -110,6 +111,16 @@ public class PageController {
 	public ModelAndView register() {
 		ModelAndView model = new ModelAndView("page");
 		model.addObject("title", "Register");
+		return model;
+	}
+	
+	@RequestMapping(value = "/login")
+	public ModelAndView login(@RequestParam(name="error", required=false) String error) {
+		ModelAndView model = new ModelAndView("login");
+		model.addObject("title", "Login");
+		if(error!=null) {
+			model.addObject("message", "Invalid Username or Password");
+		}
 		return model;
 	}
 }
