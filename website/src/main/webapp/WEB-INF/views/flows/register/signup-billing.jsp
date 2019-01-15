@@ -14,8 +14,8 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
 									<sf:input type="text" class="form-control" path="addressLine" id="addressLine"  placeholder="Enter Street Name"/>
-									<sf:errors path="addressLine" cssClass="help-block" element="em"/>
 								</div>
+									<sf:errors path="addressLine" style="color:red;" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 				
@@ -25,8 +25,8 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
 									<sf:input type="text" class="form-control" path="addressNumber" id="addressNumber"  placeholder="Enter Street Nr"/>
-									<sf:errors path="addressNumber" cssClass="help-block" element="em"/>
 								</div>
+									<sf:errors path="addressNumber" style="color:red;" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 
@@ -36,8 +36,8 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
 									<sf:input type="text" class="form-control" path="city" id="city"  placeholder="Enter City"/>
-									<sf:errors path="city" cssClass="help-block" element="em"/>
 								</div>
+									<sf:errors path="city" style="color:red;" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 						
@@ -47,8 +47,8 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
 									<sf:input type="text" class="form-control" path="state" id="state"  placeholder="Enter State"/>
-									<sf:errors path="state" cssClass="help-block" element="em"/>
 								</div>
+									<sf:errors path="state" style="color:red;" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 
@@ -58,8 +58,8 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
 									<sf:input type="text" class="form-control" path="country" id="country"  placeholder="Enter Country"/>
-									<sf:errors path="country" cssClass="help-block" element="em"/>
 								</div>
+									<sf:errors path="country" style="color:red;" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 
@@ -69,8 +69,8 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
 									<sf:input type="text" class="form-control" path="postalCode" id="postalCode"  placeholder="Enter Postal Code"/>
-									<sf:errors path="postalCode" cssClass="help-block" element="em"/>
 								</div>
+									<sf:errors path="postalCode" style="color:red;" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 

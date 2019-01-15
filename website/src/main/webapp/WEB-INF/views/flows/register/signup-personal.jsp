@@ -14,8 +14,8 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 									<sf:input type="text" class="form-control" path="firstName" id="firstName"  placeholder="Enter your First Name"/>
-									<sf:errors path="firstName" cssClass="help-block" element="em"/>
 								</div>
+								<sf:errors path="firstName" style="color:red;" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 				
@@ -25,8 +25,8 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 									<sf:input type="text" class="form-control" path="lastName" id="lastName"  placeholder="Enter your Last Name"/>
-									<sf:errors path="lastName" cssClass="help-block" element="em"/>
 								</div>
+									<sf:errors path="lastName" style="color:red;" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 
@@ -36,8 +36,8 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
 									<sf:input type="text" class="form-control" path="email" id="email"  placeholder="Enter your Email"/>
-									<sf:errors path="email" cssClass="help-block" element="em"/>
 								</div>
+									<sf:errors path="email" style="color:red;" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 						
@@ -47,8 +47,8 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
 									<sf:input type="text" class="form-control" path="contactNumber" id="contactNumber"  placeholder="Enter your Phone Number"/>
-									<sf:errors path="contactNumber" cssClass="help-block" element="em"/>
 								</div>
+									<sf:errors path="contactNumber" style="color:red;" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 
@@ -58,21 +58,21 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="glyphicon glyphicon-ok"></i></span>
 									<sf:input type="password" class="form-control" path="password" id="password"  placeholder="Enter your Password"/>
-									<sf:errors path="password" cssClass="help-block" element="em"/>
 								</div>
+									<sf:errors path="password" style="color:red;" cssClass="help-block" element="em"/>
 							</div>
 						</div>
-
-<%-- 						<div class="form-group">
+						
+ 						<div class="form-group">
 							<label for="confirm" class="col-md-4 control-label">Confirm Password</label>
 							<div class="col-md-8">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 									<sf:input type="password" class="form-control" path="confirmPassword" id="confirmPassword"  placeholder="Confirm your Password"/>
-									<sf:errors path="confirmPassword" cssClass="help-block" element="em"/>
 								</div>
+									<sf:errors path="confirmPassword" style="color:red;" cssClass="help-block" element="em"/>
 							</div>
-						</div> --%>
+						</div> 
 						
 						<div class="form-group">
 							<label class="col-md-4 control-label">Select Role</label>
