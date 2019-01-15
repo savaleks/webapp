@@ -1,3 +1,4 @@
+<%@taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -19,29 +20,38 @@
                     </li>
                     <li id="contact"><a href="${contextRoot}/contact">Contact</a>
                     </li>
+                    <security:authorize access="hasAuthority('ADMIN')">
                     <li id="manageProduct"><a href="${contextRoot}/manage/products">Manage Products</a>
                     </li>
+                    </security:authorize>
                 </ul>
                 
                 <ul class="nav navbar-nav navbar-right">
+                	<security:authorize access="isAnonymous()">
                 	 <li id="manageProduct"><a href="${contextRoot}/login">Login</a>
                     </li>
                      <li id="manageProduct"><a href="${contextRoot}/register">Sign Up</a>
                     </li>
+                    </security:authorize>
+                    
+                    <security:authorize access="isAuthenticated()">
                     <li class="dropdown">
-                    	<a href="javascript:void(0)" class="btn btn-default dropdown-toggle"
+                    	<a href="javascript:void(0)" class="btn btn-secondary dropdown-toggle"
                     	id="dropdownMenu1" data-toggle="dropdown">${userModel.fullName} <span class="caret"></span></a>
                     	<ul class="dropdown-menu">
+                    	<security:authorize access="hasAuthority('USER')">
                     		<li>
                     			<a href="${contextRoot}/card">
                     				<span class="glyphicon glyphicon-shopping-cart"></span>
                     				<span class="badge">${userModel.card.cardLines}</span> &#8364; ${userModel.card.grandTotal}
                     			</a>
                     		</li>
+                   		</security:authorize>
                     		<li class="divider" role="separator"></li>
                     		<li><a href="${contextRoot}/logout">Logout</a></li>
                     	</ul>
                     </li>
+                    </security:authorize>
                 </ul>
                 
             </div>
@@ -49,3 +59,9 @@
         </div>
         <!-- /.container -->
     </nav>
+    
+    <script>
+    	window.userRole = '${userModel.role}';
+    </script>
+    
+    

@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <div class="container">
 
 	<div class="row">
@@ -44,14 +45,20 @@
 				</c:otherwise>
 			</c:choose>
 			
+			<security:authorize access="hasAuthority('USER')">
 			<c:choose>
 				<c:when test="${product.quantity < 1}">
 					<a href="javascript:void(0)" class="btn btn-success disabled">Add to Card</a>
 				</c:when>
 				<c:otherwise>
-					<a href="${contextRoot}/card/add/${productId}/product" class="btn btn-success">Add to Card</a>
+					<a href="${contextRoot}/card/add/${product.id}/product" class="btn btn-success">Add to Card</a>
 				</c:otherwise>
 			</c:choose>
+			</security:authorize>
+			
+			<security:authorize access="hasAuthority('ADMIN')">
+				<a href="${contextRoot}/manage/${product.id}/product" class="btn btn-warning">Edit</a>
+			</security:authorize>
 
 			<a href="${contextRoot}/show/all/product" class="btn btn-primary">Back</a>
 		

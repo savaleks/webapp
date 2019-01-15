@@ -90,7 +90,11 @@ $(function(){
 						if(row.quantity<1){
 							str += '<a href="javascript:void(0)" class="btn btn-success disabled">Add to Card</a>';
 						} else {
-							str += '<a href="'+window.contextRoot+'/card/add/'+data+'/product" class="btn btn-success">Add to Card</a>';
+							if(userRole == 'ADMIN'){
+								str += '<a href="'+window.contextRoot+'/manage/'+data+'/product" class="btn btn-warning">Edit</a>';												
+							} else {
+								str += '<a href="'+window.contextRoot+'/card/add/'+data+'/product" class="btn btn-success">Add to Card</a>';								
+							}
 						}
 						return str;
 					}
