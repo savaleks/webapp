@@ -123,4 +123,14 @@ public class PageController {
 		}
 		return model;
 	}
+	
+	
+	@RequestMapping(value = "/no-access")
+	public ModelAndView accessDenied() {
+		ModelAndView model = new ModelAndView("error");
+		model.addObject("title", "403 - ACCESS DENIED");
+		model.addObject("errorTitle", "This is Admin Page");
+		model.addObject("errorDescription", "You not authorized for this page");
+		return model;
+	}
 }

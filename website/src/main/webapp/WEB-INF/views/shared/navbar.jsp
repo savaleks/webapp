@@ -28,6 +28,20 @@
                     </li>
                      <li id="manageProduct"><a href="${contextRoot}/register">Sign Up</a>
                     </li>
+                    <li class="dropdown">
+                    	<a href="javascript:void(0)" class="btn btn-default dropdown-toggle"
+                    	id="dropdownMenu1" data-toggle="dropdown">${userModel.fullName} <span class="caret"></span></a>
+                    	<ul class="dropdown-menu">
+                    		<li>
+                    			<a href="${contextRoot}/card">
+                    				<span class="glyphicon glyphicon-shopping-cart"></span>
+                    				<span class="badge">${userModel.card.cardLines}</span> &#8364; ${userModel.card.grandTotal}
+                    			</a>
+                    		</li>
+                    		<li class="divider" role="separator"></li>
+                    		<li><a href="${contextRoot}/logout">Logout</a></li>
+                    	</ul>
+                    </li>
                 </ul>
                 
             </div>
