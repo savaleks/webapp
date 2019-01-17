@@ -40,6 +40,15 @@
 					</div>
 				</div>
 			</c:if>
+			
+			<c:if test="${not empty logout}">
+				<div class="row">
+					<div class="col-md-4 col-md-offset-4">
+						<div class="alert alert-default">${logout}</div>	
+					</div>
+				</div>
+			</c:if>
+			
 			    <div class="row">
 					<div class="col-md-4 col-md-offset-4">
 			    		<div class="panel panel-default">

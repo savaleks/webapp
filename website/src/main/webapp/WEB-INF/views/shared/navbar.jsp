@@ -35,20 +35,20 @@
                     </security:authorize>
                     
                     <security:authorize access="isAuthenticated()">
-                    <li class="dropdown">
+                    <li class="dropdown" id="userCard">
                     	<a href="javascript:void(0)" class="btn btn-secondary dropdown-toggle"
                     	id="dropdownMenu1" data-toggle="dropdown">${userModel.fullName} <span class="caret"></span></a>
                     	<ul class="dropdown-menu">
                     	<security:authorize access="hasAuthority('USER')">
                     		<li>
-                    			<a href="${contextRoot}/card">
+                    			<a href="${contextRoot}/card/show">
                     				<span class="glyphicon glyphicon-shopping-cart"></span>
                     				<span class="badge">${userModel.card.cardLines}</span> &#8364; ${userModel.card.grandTotal}
                     			</a>
                     		</li>
                    		</security:authorize>
                     		<li class="divider" role="separator"></li>
-                    		<li><a href="${contextRoot}/logout">Logout</a></li>
+                    		<li><a href="${contextRoot}/make-logout">Logout</a></li>
                     	</ul>
                     </li>
                     </security:authorize>

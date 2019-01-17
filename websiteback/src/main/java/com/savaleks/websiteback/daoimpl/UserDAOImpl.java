@@ -42,28 +42,19 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public boolean updateCard(Card card) {
-		try {
-			sessionFactory.getCurrentSession().update(card);
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
-
-	@Override
 	public User getByEmail(String email) {
 		String selectQuery = "FROM User WHERE email = :email";
 		try {
-			return sessionFactory.getCurrentSession()
-					.createQuery(selectQuery, User.class)
-					.setParameter("email", email)
-					.getSingleResult();
-		} catch (Exception e) {
-			e.printStackTrace();
+		return sessionFactory
+				.getCurrentSession()
+					.createQuery(selectQuery,User.class)
+						.setParameter("email",email)
+							.getSingleResult();
+		}
+		catch(Exception ex) {
 			return null;
 		}
+							
 	}
 
 	@Override

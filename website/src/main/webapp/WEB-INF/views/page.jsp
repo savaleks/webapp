@@ -50,6 +50,10 @@
 			<c:if test="${userClickManageProducts == true}">
 				<%@include file="productManagement.jsp"%>
 			</c:if>
+			
+			<c:if test="${userClickShowCard == true}">
+				<%@include file="card.jsp"%>
+			</c:if>
 
 		</div>
 

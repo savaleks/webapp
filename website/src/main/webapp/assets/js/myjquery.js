@@ -15,6 +15,9 @@ $(function(){
 	case 'Manage Products':
 		$('#manageProduct').addClass('active');
 		break;
+	case 'User card':
+		$('#userCard').addClass('active');
+		break;
 	default: 
 		if(menu == "Home") break;
 		$('#productList').addClass('active');
@@ -86,14 +89,14 @@ $(function(){
 					mRender: function(data, type, row){
 						var str = '';
 						str += '<a href="'+window.contextRoot+'/show/'+data+'/product" class="btn btn-primary">View</a> &#160;';
-						
-						if(row.quantity<1){
-							str += '<a href="javascript:void(0)" class="btn btn-success disabled">Add to Card</a>';
+						if(userRole == 'ADMIN'){
+							str += '<a href="'+window.contextRoot+'/manage/'+data+'/product" class="btn btn-warning">Edit</a>';																		
 						} else {
-							if(userRole == 'ADMIN'){
-								str += '<a href="'+window.contextRoot+'/manage/'+data+'/product" class="btn btn-warning">Edit</a>';												
-							} else {
-								str += '<a href="'+window.contextRoot+'/card/add/'+data+'/product" class="btn btn-success">Add to Card</a>';								
+								
+							if(row.quantity<1){
+								str += '<a href="javascript:void(0)" class="btn btn-success disabled">Add to Card</a>';
+							} else {							
+									str += '<a href="'+window.contextRoot+'/card/add/'+data+'/product" class="btn btn-success">Add to Card</a>';															
 							}
 						}
 						return str;
@@ -311,11 +314,29 @@ var $adminProductsTable = $('#adminProductsTable');
 		});
 	}
 	
-	
-	
-	
-	
-	
-	
+	// refresh card
+	$('button[name="refreshCard"]').click(function(){
+		var cardLineId = $(this).attr('value');
+		var countElement = $('#count_' + cardLineId);
+		
+		var originalCount = countElement.attr('value');
+		var currentCount = countElement.val();
+		
+		if(currentCount !== originalCount){
+			if(currentCount < 1 || currentCount > 3){
+				countElement.val(originalCount);
+				bootbox.alert({
+					size: 'medium',
+					title: 'Error',
+					message: 'Product count should be from 1 to 3'
+				});
+			} else {
+				var updateUrl = window.contextRoot + '/card/' + cardLineId + '/update?count=' + currentCount;
+				window.location.href = updateUrl;
+			}
+		}
+		
+	});
+
 	
 });

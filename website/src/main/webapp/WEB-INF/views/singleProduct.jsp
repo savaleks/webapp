@@ -60,7 +60,7 @@
 				<a href="${contextRoot}/manage/${product.id}/product" class="btn btn-warning">Edit</a>
 			</security:authorize>
 
-			<a href="${contextRoot}/show/all/product" class="btn btn-primary">Back</a>
+			<a href="${contextRoot}/show/all/products" class="btn btn-primary">Back</a>
 		
 		</div>
 	
